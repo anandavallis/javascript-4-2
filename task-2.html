@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploring</title>
+</head>
+<body>
+    <h1>DOM Selection Methods</h1>
+    
+    <!-- Element with ID for getElementById() -->
+    <div id="unique-box" class="box">ID: unique-box</div>
+    
+    <!-- Elements with class for querySelector() and querySelectorAll() -->
+    <div class="color-box">Box 1</div>
+    <div class="color-box">Box 2</div>
+    <div class="color-box">Box 3</div>
+    
+    <button onclick="runDomSelectors()">Run Selection Methods</button>
+    
+    <script>
+        function runDomSelectors() {
+            // 1. getElementById() - select by ID and modify content
+            const idElement = document.getElementById("unique-box");
+            idElement.textContent = "Changed by ID!";
+            console.log("getElementById result:", idElement);
+            
+            // 2. querySelector() - select first matching element and change style
+            const firstColorBox = document.querySelector(".color-box");
+            firstColorBox.style.backgroundColor = "lightblue";
+            firstColorBox.style.border = "2px solid blue";
+            console.log("querySelector result:", firstColorBox);
+            
+            // 3. querySelectorAll() - select all matching elements and modify them
+            const allColorBoxes = document.querySelectorAll(".color-box");
+            allColorBoxes.forEach((box, index) => {
+                box.textContent = `Box ${index + 1} (modified)`;
+                box.style.color = "red";
+            });
+            console.log("querySelectorAll result:", allColorBoxes);
+        }
+    </script>
+    </body>
+    </html>
