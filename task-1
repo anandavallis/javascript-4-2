@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch and Selected Values</title>
+</head>
+<body>
+    <h2>Select Options</h2>
+    
+    <div class="form-group">
+        <h3>Choose a Fruit (Radio Buttons)</h3>
+
+        <input type="radio" id="apple" name="fruit" value="Apple">
+        <label for="apple">Apple</label>
+
+        <input type="radio" id="banana" name="fruit" value="Banana">
+        <label for="banana">Banana</label>
+
+        <input type="radio" id="orange" name="fruit" value="Orange">
+        <label for="orange">Orange</label>
+   </div>
+    
+    <div class="form-group">
+        <h3>Choose Colors (Checkboxes)</h3>
+        <input type="checkbox" id="red" name="color" value="Red">
+        <label for="red">Red</label><br>
+        
+        <input type="checkbox" id="green" name="color" value="Green">
+        <label for="green">Green</label><br>
+        
+        <input type="checkbox" id="blue" name="color" value="Blue">
+        <label for="blue">Blue</label><br>
+        
+        <input type="checkbox" id="yellow" name="color" value="Yellow">
+        <label for="yellow">Yellow</label><br>
+    </div>
+    
+    <button id="fetchButton">Fetch Selected Values</button>
+    
+    <div id="result" class="result">
+        <p>Selected values will appear here</p>
+    </div>
+
+
+      <script>
+        document.getElementById('fetchButton').addEventListener('click', function() {
+            // Get selected radio button value
+            const selectedRadio = document.querySelector('input[name="fruit"]:checked');
+            let radioValue = selectedRadio ? selectedRadio.value : "None selected";
+            
+            // Get selected checkbox values
+            const checkboxes = document.querySelectorAll('input[name="color"]:checked');
+            let checkboxValues = [];
+            
+            checkboxes.forEach(function(checkbox) {
+                checkboxValues.push(checkbox.value);
+            });
+            
+            // Format checkbox values for display
+            let checkboxText = checkboxValues.length > 0 ? checkboxValues.join(", ") : "None selected";
+            
+            // Display results in the result div
+            document.getElementById('result').innerHTML = `
+                <p><strong>Selected Fruit:</strong> ${radioValue}</p>
+                <p><strong>Selected Colors:</strong> ${checkboxText}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
